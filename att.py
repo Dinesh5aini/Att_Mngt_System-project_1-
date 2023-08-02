@@ -114,14 +114,14 @@ def mark_attendance():
             print(f"Error Occurred: {exp}")
     else:
         if login==False or userInfo==None or userType not in ["manager","admin","student"]:
-            res=input(f"You're not Logged In\n{lightGRN}[WANNA LOGIN RIGHT NOW](y/n) :{nc}")
+            res=input(f"You're not Logged In\n[WANNA LOGIN RIGHT NOW](y/n) :")
             if res=="y":
                 loginfn()
             else:
-                print(f"{purple}Alright you can login whenever you want.\nSee yah! ;-){nc}")
+                print(f"Alright you can login whenever you want.\nSee yah! ;-)")
             
         else:
-            print(f"{boldRED}[WARNING] Invalid User! {nc}")
+            print(f"[WARNING] Invalid User! ")
 
 def user_exists(uname=None, uType=None):
     with open("users.txt", "r") as file:
@@ -137,11 +137,11 @@ def already_present():
 
 def creator():
     while True:
-        inpt=input(f"{purple}for whom you wanna create?\n1. manager\n2. student\n3. exit\n{nc}")
+        inpt=input(f"for whom you wanna create?\n1. manager\n2. student\n3. exit\n")
         if inpt in ["manager","1"]:
             if userType=="admin":
                 uType="manager"
-                inp1 = input(f"{purple}1. create account\n\t\tOR\n2. create entry{nc}")
+                inp1 = input(f"1. create account\n\t\tOR\n2. create entry")
                 if inp1 in ["1","create account","account"]:
                     mk_user(uType)
                 elif inp1 in ["2","create entry", "entry"]:
@@ -172,7 +172,7 @@ def creator():
 
             if userType in ["admin","manager"]:
                 uType="student"
-                inp1 = input(f"{purple}1. create account\n\t\tOR\n2. create entry{nc}")
+                inp1 = input(f"1. create account\n\t\tOR\n2. create entry")
                 if inp1 in ["1","create account","account"]:
                     mk_user(uType)
                 elif inp1 in ["2","create entry", "entry"]:
@@ -195,7 +195,7 @@ def creator():
         elif inpt=="exit":
             break
         else:
-            print(f"{boldRED}Please choose valid options{nc}")
+            print(f"Please choose valid options")
 
 def filteration_users(param=None):
     print("you are in filter mode : ")
@@ -205,7 +205,7 @@ def filteration_users(param=None):
             for line in file:
                 data = line.strip().split(",")
                 if data[2]==name:
-                    print(f"{lightGRN}{data[0]}\t{data[1]}\t{data[2]}\t{data[4]}\t{data[5]}\t{data[6]}{nc}")
+                    print(f"{data[0]}\t{data[1]}\t{data[2]}\t{data[4]}\t{data[5]}\t{data[6]}")
     elif param in ["type","2"]:
         type1=input("Enter the type from (student/manager/admin): ")
         if type1 in ["student","manager","admin"]:
@@ -213,7 +213,7 @@ def filteration_users(param=None):
                 for line in file:
                     data = line.strip().split(",")
                     if data[4]==type1:
-                        print(f"{lightGRN}{data[0]}\t{data[1]}\t{data[2]}\t{data[4]}\t{data[5]}\t{data[6]}{nc}")
+                        print(f"{data[0]}\t{data[1]}\t{data[2]}\t{data[4]}\t{data[5]}\t{data[6]}")
         else:
             print("invalid type!")
 
@@ -223,7 +223,7 @@ def filteration_users(param=None):
             for line in file:
                 data = line.strip().split(",")
                 if data[5]==date:
-                    print(f"{lightGRN}{data[0]}\t{data[1]}\t{data[2]}\t{data[4]}\t{data[5]}\t{data[6]}\t{nc}")
+                    print(f"{data[0]}\t{data[1]}\t{data[2]}\t{data[4]}\t{data[5]}\t{data[6]}\t")
            
     elif param in ["age","4"]:
         age=input("Enter the age: ")
@@ -231,7 +231,7 @@ def filteration_users(param=None):
             for line in file:
                 data = line.strip().split(",")
                 if data[1]==age:
-                    print(f"{lightGRN}{data[0]}\t{data[1]}\t{data[2]}\t{data[4]}\t{data[5]}\t{data[6]}\t{nc}")
+                    print(f"{data[0]}\t{data[1]}\t{data[2]}\t{data[4]}\t{data[5]}\t{data[6]}\t")
     else:
         return
 
@@ -243,7 +243,7 @@ def filteration_attendance(param=None,param2=None):
             for line in file:
                 data = line.strip().split(",")
                 if data[2]==name:
-                    print(f"{boldRED}{data[0]}\t{data[1]}\t{data[2]}\t{data[3]}{nc}")
+                    print(f"{data[0]}\t{data[1]}\t{data[2]}\t{data[3]}")
     elif param in ["type","2"]:
         para1=input("By (absent/present): ")
         if para1 in ["absent"]:
@@ -251,13 +251,13 @@ def filteration_attendance(param=None,param2=None):
                 for line in file:
                     data = line.strip().split(",")
                     if data[4]==para1:
-                        print(f"{boldRED}{data[0]}\t{data[1]}\t{data[2]}\t{data[3]}{nc}")
+                        print(f"{data[0]}\t{data[1]}\t{data[2]}\t{data[3]}")
         elif para1 in ["present"]:
             with open(param2,"r") as file:
                 for line in file:
                     data = line.strip().split(",")
                     if data[4]==para1:
-                        print(f"{boldRED}{data[0]}\t{data[1]}\t{data[2]}\t{data[3]}{nc}")
+                        print(f"{data[0]}\t{data[1]}\t{data[2]}\t{data[3]}")
         else:
             print("invalid type!")
 
@@ -267,7 +267,7 @@ def filteration_attendance(param=None,param2=None):
             for line in file:
                 data = line.strip().split(",")
                 if data[5]==date:
-                    print(f"{boldRED}{data[0]}\t{data[1]}\t{data[2]}\t{data[3]}{nc}")
+                    print(f"{data[0]}\t{data[1]}\t{data[2]}\t{data[3]}")
            
     else:
         return
@@ -276,18 +276,18 @@ def filteration_attendance(param=None,param2=None):
 def filtered_views():
     while True:
         print("\nyou can filter your views by any field")
-        inp=input(f"{purple}so what you wanna filter?\n1. users list\n2. admins attendance\n3. managers attendance\n4. students attendace\n5. exit\n{nc}{lightBLUE}admin@attendance_system==>[input]: {nc}")
+        inp=input(f"so what you wanna filter?\n1. users list\n2. admins attendance\n3. managers attendance\n4. students attendace\n5. exit\nadmin@attendance_system==>[input]: ")
         if inp=="1":
-            inpt=input(f"{purple}{'*'*20}\n1. name\n2. type\n3. date\n4. age\n5. exit\nby which parameter you wanna filter: {nc}")
+            inpt=input(f"{'*'*20}\n1. name\n2. type\n3. date\n4. age\n5. exit\nby which parameter you wanna filter: ")
             filteration_users(inpt)
         elif inp=="2":
-            inpt=input(f"{purple}{'*'*20}\n1. name\n2. date\n3. presence\n4. exit\nby which parameter you wanna filter: {nc}")
+            inpt=input(f"{'*'*20}\n1. name\n2. date\n3. presence\n4. exit\nby which parameter you wanna filter: ")
             filteration_attendance(inpt,admins_attendance)
         elif inp=="3":
-            inpt=input(f"{purple}{'*'*20}\n1. name\n2. type\n3. date\n4. exit\nby which parameter you wanna filter: {nc}")
+            inpt=input(f"{'*'*20}\n1. name\n2. type\n3. date\n4. exit\nby which parameter you wanna filter: ")
             filteration_attendance(inpt,managers_attendance)
         elif inp=="4":
-            inpt=input(f"{purple}{'*'*20}\n1. name\n2. type\n3. date\n4. exit\nby which parameter you wanna filter: {nc}")
+            inpt=input(f"{'*'*20}\n1. name\n2. type\n3. date\n4. exit\nby which parameter you wanna filter: ")
             filteration_attendance(inpt,students_attendance)
         else:
             break
@@ -302,23 +302,23 @@ def view():
             with open(users_txt,"r") as file:
                 for line in file:
                     data = line.strip().split(",")
-                    print(f"{lightGRN}{data[0]}\t\t{data[1]}\t\t{data[2]}\t\t{data[3]}\t\t{data[4]}\t\t{data[5]}{nc}")
+                    print(f"{data[0]}\t\t{data[1]}\t\t{data[2]}\t\t{data[3]}\t\t{data[4]}\t\t{data[5]}")
         elif inp=="2":
             with open(managers_attendance,"r") as file:
                 for line in file:
                     data = line.strip().split(",")
-                    print(f"{lightGRN}{data[0]}\t\t{data[1]}\t\t{data[2]}\t\t{data[3]}{nc}")
+                    print(f"{data[0]}\t\t{data[1]}\t\t{data[2]}\t\t{data[3]}")
         elif inp=="3":
             with open(students_attendance,"r") as file:
                 for line in file:
                     data = line.strip().split(",")
-                    print(f"{lightGRN}{data[0]}\t\t{data[1]}\t\t{data[2]}\t\t{data[3]}{nc}")
+                    print(f"{data[0]}\t\t{data[1]}\t\t{data[2]}\t\t{data[3]}")
         elif inp=="4":
             filtered_views()
         elif inp=="exit":
             break
         else:
-            print(f"{boldRED}invalid command {nc}")
+            print(f"invalid command ")
             break
 
 
@@ -432,8 +432,8 @@ def update_control():
 
 def administrate():
     if userType in ["admin","manager"]:
-        print(f"{purple}commands available:\n\t1. create\n\t2. view\n\t3. update\n\t{nc}")
-        inp = input(f"{lightBLUE}admin@attendance_system==>{nc}")
+        print(f"commands available:\n\t1. create\n\t2. view\n\t3. update\n\t")
+        inp = input(f"admin@attendance_system==>")
         if inp=="create":
             creator()
         elif inp=="view":
@@ -441,7 +441,7 @@ def administrate():
         elif inp=="update":
             update_control()
     else:
-        print(f"{boldRED}Noone Else can be here left admin and manager.\nBy The Way are you a hacker Who is tryna hack me hu...!")
+        print(f"Noone Else can be here left admin and manager.\nBy The Way are you a hacker Who is tryna hack me hu...!")
 
 def find_absentees(file_path, date):
     absentees = []
@@ -468,7 +468,7 @@ def find_absentees(file_path, date):
     
 # Main loop
 while True:
-    inp = input(f"{lightBLUE}jerrygems@attendance_system==>{nc}")
+    inp = input(f"@attendance_system==>")
     if inp == "create user":
         result = check_admin()
         if result == True:
@@ -484,7 +484,7 @@ while True:
     elif inp == "logout":
         logout()
     elif inp == "status":
-        print(f"userType={userType},userLogin={login}\n{lightGRN}Login User Info: \n{userInfo}{nc}")
+        print(f"userType={userType},userLogin={login}\nLogin User Info: \n{userInfo}")
     elif inp == "absentees":
         print("Select a file to check attendance from:\n1. Students Attendance\n2. Managers Attendance\n3. Admins Attendance")
         choice = input("Enter the number of your choice: ")
