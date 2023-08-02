@@ -466,7 +466,7 @@ def find_absentees(file_path, date):
     return absentees
 
     
-# Main loop
+
 while True:
     inp = input(f"@attendance_system==>")
     if inp == "create user":
